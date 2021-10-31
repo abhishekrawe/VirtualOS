@@ -5,6 +5,7 @@ import (
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
+	"github.com/Knetic/govaluate"
 )
 
 func main() {
@@ -12,11 +13,18 @@ func main() {
 	w := a.NewWindow("Calculator with Go and Fyne")
 
     output:=""
+	
 	input := widget.NewLabel(output)
-
-
+	isHistory:=false;
+	historyStr := ""
+    history:= widget.NewLabel(historyStr)
+    var historyArr []string;
 	historyBtn:=widget.NewButton("history", func() {
-
+          for i:=len(historyArr)-1;i>=0;i-- {
+			  historyStr = historyStr+historyArr[i];
+			  historyStr+="\n";
+		  }
+		  history.SetText(historyStr);
 	})
 	backBtn:=widget.NewButton("back", func() {
 		if len(output)>0 {
@@ -130,19 +138,24 @@ func main() {
 		if err == nil{
 			result, err := expression.Evaluate(nil);
 			if err == nil {
-				output = strconv.FormatFloat(result.(float64), 'f', -1, 64);
+				ans := strconv.FormatFloat(result.(float64), 'f', -1, 64);
+				strToAppend:=output+" = " + ans;
+				historyArr = append(historyArr, strToAppend);
+				output = ans;
+			}else {
+				output = "error";
 			}
+		}else {
+			output =" error";
 		}
 
 		input.SetText(output)
 
 	})
 
-	
-
-	
 	w.SetContent(container.NewVBox(
 		input,
+		history,
 		container.NewGridWithColumns(2,
 		historyBtn,
 	    backBtn,
