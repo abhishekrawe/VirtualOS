@@ -11,6 +11,7 @@ import (
 func main() {
 	a := app.New()
 	w := a.NewWindow("Calculator with Go and Fyne")
+	//w.Resize(fyne.newSize(500,280))
 
     output:=""
 	
@@ -20,10 +21,16 @@ func main() {
     history:= widget.NewLabel(historyStr)
     var historyArr []string;
 	historyBtn:=widget.NewButton("history", func() {
-          for i:=len(historyArr)-1;i>=0;i-- {
-			  historyStr = historyStr+historyArr[i];
-			  historyStr+="\n";
-		  }
+
+		if isHistory{
+             historyStr = ""
+		} else {
+			for i:=len(historyArr)-1;i>=0;i-- {
+				historyStr = historyStr+historyArr[i];
+				historyStr+="\n";
+			}
+		}
+          isHistory = !isHistory;
 		  history.SetText(historyStr);
 	})
 	backBtn:=widget.NewButton("back", func() {
