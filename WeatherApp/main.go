@@ -93,7 +93,7 @@ label5:= canvas.NewText(fmt.Sprintln("Humidity %.2f", weather.Main.Humidity), co
 //    bytes, err = welcome.Marshal()
 
 
-func UnmarshalWelcome(data []byte) (Welcome, error) {
+func UnmarshalWeather(data []byte) (Welcome, error) {
 	var r Welcome
 	err := json.Unmarshal(data, &r)
 	return r, err
