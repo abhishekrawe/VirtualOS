@@ -25,7 +25,7 @@ func linearSearch(dataList []int , key int) bool{
 
 func main() {
 
-arr:= []int { 1,2,3,4,5}
-fmt.Println(linearSearch(arr , 4))
+     arr:= []int { 1,2,3,4,5}
+     fmt.Println(linearSearch(arr , 4))
 
 }

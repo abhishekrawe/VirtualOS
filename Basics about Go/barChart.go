@@ -26,7 +26,7 @@ func printBar(arr [5] int){
 		}
 	}
 
-	fmt.Println(str)
+	   fmt.Println(str)
 
 }
 
