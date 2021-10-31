@@ -13,7 +13,7 @@ func main() {
 	hello := widget.NewLabel("Hello Fyne!")
 	w.SetContent(container.NewVBox(
 		hello,
-		widget.NewButton("Hi!", func() {
+		widget.NewButton("Hello World!", func() {
 			hello.SetText("Welcome :)")
 		}),
 	))
