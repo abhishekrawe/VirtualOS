@@ -1,6 +1,7 @@
 package main
 
 import (
+	"strconv"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
@@ -124,8 +125,17 @@ func main() {
 	})
 
 	equalBtn:= widget.NewButton("=" , func() {
-		output = output+"=";
-		input.SetText(output);
+		
+		expression, err := govaluate.NewEvaluableExpression(output);
+		if err == nil{
+			result, err := expression.Evaluate(nil);
+			if err == nil {
+				output = strconv.FormatFloat(result.(float64), 'f', -1. 64);
+			}
+		}
+
+		input.SetText(output)
+
 	})
 
 	
