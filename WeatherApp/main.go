@@ -1,7 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/app"
+)
 
 func main() {
-	fmt.Print("Hello From Go")
+	a:= app.New()
+
+	w:= a.NewWindow("Weather App Pep")
+
+	w.Resize(fyne.NewSize(500, 500))
+
+	w.ShowAndRun()
 }
+
