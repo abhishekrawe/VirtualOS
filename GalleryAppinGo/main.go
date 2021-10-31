@@ -8,7 +8,7 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/widget"
+	//"fyne.io/fyne/v2/widget"
 	//"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/canvas"
 	//"fyne.io/fyne/v2/theme"
@@ -16,8 +16,8 @@ import (
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Hello")
-	w.Resize(fyne.NewSize(800,600));
+	w := a.NewWindow("Image Viewer")
+	w.Resize(fyne.NewSize(800,630));
 	root_src:="C:\\Users\\HP\\Pictures";
 	files, err := ioutil.ReadDir(root_src);
 	if err != nil {
@@ -34,12 +34,18 @@ func main() {
 		}
     }
 
-	image := canvas.NewImageFromFile(picsArr[0]);
+	
 	tabs := container.NewAppTabs(
-		container.NewTabItem("Tab 1", widget.NewLabel("Hello")),
-		container.NewTabItem("Tab 2", widget.NewLabel("World")),
+		
+	  container.NewTabItem("Image",canvas.NewImageFromFile(picsArr[0])),	
 	)
-    w.SetContent(container.NewVBox(image, tabs));
+	for i:=1; i<len(picsArr);i++ {
+		image:=canvas.NewImageFromFile(picsArr[i]);
+		image.FillMode = canvas.ImageFillOriginal
+		tabs.Append(container.NewTabItem("Image" , image))
+	}
+	tabs.SetTabLocation(container.TabLocationLeading)
+    w.SetContent(tabs);
 	w.ShowAndRun()
 } 
 
