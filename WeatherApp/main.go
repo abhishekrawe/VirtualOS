@@ -47,7 +47,7 @@ func main() {
 
 
 
-img:=canvas.NewImageFromFile("weather.png")
+img:=canvas.NewImageFromFile("weather.jpg")
 img.FillMode = canvas.ImageFillOriginal
 
 
