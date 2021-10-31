@@ -124,13 +124,13 @@ func main() {
 		input.SetText(output);
 	})
 
-	equalBtn:= widget.NewButton("=" , func() {
+	equalBtn:= widget.NewButton("=", func() {
 		
 		expression, err := govaluate.NewEvaluableExpression(output);
 		if err == nil{
 			result, err := expression.Evaluate(nil);
 			if err == nil {
-				output = strconv.FormatFloat(result.(float64), 'f', -1. 64);
+				output = strconv.FormatFloat(result.(float64), 'f', -1, 64);
 			}
 		}
 
