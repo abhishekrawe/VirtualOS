@@ -6,11 +6,14 @@ import (
 	"image/color"
 	"io/ioutil"
 	"net/http"
+	"log"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/widget"
+
 	
 )
 
@@ -47,6 +50,11 @@ func main() {
 img:=canvas.NewImageFromFile("weather.png")
 img.FillMode = canvas.ImageFillOriginal
 
+
+combo := widget.NewSelect([]string{"Mumbai", "Noida", "Chennai"}, func(value string){
+	log.Println("Select set to", value)
+})
+
 label1:= canvas.NewText("Weather Details" , color.White)
 label1.TextStyle = fyne.TextStyle{Bold: true}
 
@@ -54,9 +62,9 @@ label2:= canvas.NewText(fmt.Sprintf("Country %s", weather.Sys.Country), color.Wh
 
 label3:= canvas.NewText(fmt.Sprintf("Wind Speed %.2f", weather.Wind.Speed), color.White)
 
-label4:= canvas.NewText(fmt.Sprintf("Temperature %2f", weather.Main.Temp), color.White)
+label4:= canvas.NewText(fmt.Sprintf("Temperature %.2f", weather.Main.Temp), color.White)
 
-label5:= canvas.NewText(fmt.Sprintf("Humadity %2f", weather.Main.Humidity), color.White)
+label5:= canvas.NewText(fmt.Sprintln("Humidity %.2f", weather.Main.Humidity), color.White)
 
 
 
@@ -64,23 +72,13 @@ label5:= canvas.NewText(fmt.Sprintf("Humadity %2f", weather.Main.Humidity), colo
 	 container.NewVBox(
 		 label1,
 		 img,
+		 combo,
 		 label2,
 		 label3,
 		 label4,
 		 label5,
 	 ),
  )
-
-
-
-
-
-w.ShowAndRun()
-
-
-
-
-
 
 
 	w.ShowAndRun()
