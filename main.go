@@ -11,7 +11,7 @@ import (
 func main() {
 	a := app.New()
 	w := a.NewWindow("Calculator with Go and Fyne")
-	//w.Resize(fyne.newSize(500,280))
+	
 
     output:=""
 	
