@@ -39,6 +39,20 @@ func main() {
 		showWeatherApp(myWindow)
 	})
 
+	btn2 = widget.NewButtonWithIcon("Calculator", theme.ContentAddIcon(), func() {
+		showCalc(myWindow)
+	})
+
+	btn3 = widget.NewButtonWithIcon("Gallery App", theme.StorageIcon(), func() {
+		showGalleryApp(myWindow)
+	})
+
+	btn4 = widget.NewButtonWithIcon("Text Editor", theme.HomeIcon(), func() {
+		showTextEditor(myWindow)
+	})
+
+
+
 
 
 }

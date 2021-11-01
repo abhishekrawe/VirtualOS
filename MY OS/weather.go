@@ -17,12 +17,12 @@ import (
 	
 )
 
-func main() {
-	a:= app.New()
+func showWeatherApp(w fyne.Window) {
+	// a:= app.New()
 
-	w:= a.NewWindow("Weather App Pep")
+	// w:= a.NewWindow("Weather App Pep")
 
-	w.Resize(fyne.NewSize(500, 500))
+	// w.Resize(fyne.NewSize(500, 500))
 
 	res , err:= http.Get("https://api.openweathermap.org/data/2.5/weather?q=mumbai&APPID=eeb377d6350cc6365bbb398b20152cd9")
 
@@ -81,7 +81,9 @@ label5:= canvas.NewText(fmt.Sprintln("Humidity %.2f", weather.Main.Humidity), co
  )
 
 
-	w.ShowAndRun()
+	// w.ShowAndRun()
+	w.SetContent(container.NewBorder(panelContent, nil , nil,nil,weatherContainer),)
+	w.Show()
 }
 
 
