@@ -42,12 +42,7 @@ func main() {
 			
 			  } 
 		}
-    }
-
-	
-	
-		
-	
+    }	
 	tabs.SetTabLocation(container.TabLocationLeading)
     w.SetContent(tabs);
 	w.ShowAndRun()
