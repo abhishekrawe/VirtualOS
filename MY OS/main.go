@@ -5,6 +5,9 @@ import (
 
 	"fyne.io/fyne"
 	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/theme"
+	"fyne.io/fyne/v2/widget"
+
 )
 
 
@@ -30,6 +33,14 @@ var panelContent *fyne.Container
 
 func main() {
 	myApp.Settings().SetTheme(theme.LightTheme())
+	img = canvas.NewImageFromFile("D:\\VirtualOS\\MY OS\\images.jpg")
+   
+	btn1 = widget.NewButtonWithIcon("Weather App", theme.InfoIcon(), func() {
+		showWeatherApp(myWindow)
+	})
+
+
+
 }
 
 
