@@ -9,10 +9,10 @@ import (
 	"log"
 
 	"fyne.io/fyne/v2"
-	"fyne.io/fyne/v2/app"
+	//"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/widget"
+	//"fyne.io/fyne/v2/widget"
 
 	
 )
@@ -26,13 +26,15 @@ func showWeatherApp(w fyne.Window) {
 
 	res , err:= http.Get("https://api.openweathermap.org/data/2.5/weather?q=mumbai&APPID=eeb377d6350cc6365bbb398b20152cd9")
 
-  if err!=nil{
+  if err!= nil{
+
 	  fmt.Println(err)
+
   }
 
   defer res.Body.Close()
 
- body, err:= ioutil.ReadAll(res.Body)
+ Body, err:= ioutil.ReadAll(res.Body)
 
   if err!=nil{
 	fmt.Println(err)
@@ -45,7 +47,7 @@ func showWeatherApp(w fyne.Window) {
 }
 
 
-
+//UI
 
 img:=canvas.NewImageFromFile("weather.jpg")
 img.FillMode = canvas.ImageFillOriginal
@@ -68,7 +70,7 @@ label5:= canvas.NewText(fmt.Sprintln("Humidity %.2f", weather.Main.Humidity), co
 
 
 
- w.SetContent(
+ w.SetContent (
 	 container.NewVBox(
 		 label1,
 		 img,
@@ -77,16 +79,16 @@ label5:= canvas.NewText(fmt.Sprintln("Humidity %.2f", weather.Main.Humidity), co
 		 label3,
 		 label4,
 		 label5,
-	 ),
- )
+		 container.NewGridWithColumns(1,
+		 ),
+	 )
 
 
-	// w.ShowAndRun()
-	w.SetContent(container.NewBorder(panelContent, nil , nil,nil,weatherContainer),)
+	 w.SetContent(container.NewBorder(DeskBtn,nil,nil,nil,weatherContainer),)
 	w.Show()
 }
 
-
+ 
 
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse and unparse this JSON data, add this code to your project and do:
