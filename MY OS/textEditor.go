@@ -1,11 +1,11 @@
 package main
 
-import(
+import (
    "io/ioutil"
    "strconv"
 
    "fyne.io/fyne/v2"
-   "fyne.io/fyne/v2/app"
+   //"fyne.io/fyne/v2/app"
    "fyne.io/fyne/v2/container"
    "fyne.io/fyne/v2/widget"
    "fyne.io/fyne/v2/dialog"
@@ -19,21 +19,18 @@ var count int = 1
 
 
 
-func main() {
+var count int = 1
 
-  a:= app.New()
+func showTextEditor(w fyne.Window){
 
-  w:=a.NewWindow("Text Editor")
+	content:= container.NewVBox(
 
-  w.Resize(fyne.NewSize(600, 600))
+		container.NewHBox(
 
-  content := container.NewVBox(
-	  container.NewHBox(
-		  widget.NewLabel("Text Editor"),
+			widget.NewLabel("Ak's Text Editor"),
 
-	  ),
-
-  )
+		),
+	)
 
   content.Add(widget.NewButton("Add New File", func(){
 	  content.Add(widget.NewLabel("New File" + strconv.Itoa(count)))
@@ -95,18 +92,18 @@ openBtn := widget.NewButton("Open Text file" , func() {
 
 
 
-  w.SetContent(
-	container.NewVBox(
-		content,
-		input,
-
-		container.NewHBox(
-           saveBtn,
-		   openBtn,
-		),
+textContainer := container.NewVBox(
+	content,
+	input,
+container.NewHBox(
+	saveBtn,
+	openBtn,
 	),
 )
 
-  w.ShowAndRun()
-
+//w:= myApp.NewWindow("Welcome To Ak's Text Editor")
+//w.Resize(fyne.NewSize(600,600))
+w.SetContent(container.NewBorder(DeskBtn,nil,nil,nil,textContainer),
+)
+w.Show()
 }
