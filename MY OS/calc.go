@@ -156,7 +156,7 @@ func showCalc(w fyne.Window){
 			if err == nil {
 				ans := strconv.FormatFloat(result.(float64), 'f', -1, 64);
 				strToAppend:=output+" = " + ans;
-				historyArr = append(historyArr, strToAppend);
+				HistoryArr = append(HistoryArr, strToAppend);
 				output = ans;
 			}else {
 				output = "error";
@@ -171,12 +171,14 @@ func showCalc(w fyne.Window){
 	})
 	hello := widget.NewLabel("Calculator")
 
-	w.SetContent(container.NewVBox(
+	calccontainer := container.NewVBox(
+		hello,
 		input,
-		history,
-		container.NewGridWithColumns(2,
+		History,
+		container.NewGridWithColumns(1,
+			container.NewGridWithColumns(2,
 		historyBtn,
-	    backBtn,
+	    BackspaceBtn,
 	    ),
 		container.NewGridWithColumns(4,
 		clearBtn,
@@ -207,13 +209,9 @@ func showCalc(w fyne.Window){
 		  ),	
 		),	
 	)
-
-     //w:=myApp.NewWindow("Calc");
-     //w.Resize(fyne.NewSize(450,280));
-	
 	w.SetContent(
-		container.NewBorder(nil,nil,nil,nil,calcContainer)
+	container.NewBorder(DeskBtn,nil,nil,nil,calccontainer),
 	)
-	
+
 	w.Show()
 }
