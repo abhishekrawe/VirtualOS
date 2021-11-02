@@ -34,7 +34,7 @@ var DeskBtn fyne.Widget
 var panelContent *fyne.Container
 
 func main() {
-	//myApp.Settings().SetTheme(theme.LightTheme())
+	myApp.Settings().SetTheme(theme.LightTheme())
 	img = canvas.NewImageFromFile("images.jpg")
    
 	btn1 = widget.NewButtonWithIcon("Weather App", theme.InfoIcon(), func() {
@@ -60,18 +60,14 @@ func main() {
 	panelContent = container.NewVBox(container.NewGridWithColumns(5, DeskBtn , btn1 , btn2 , btn3 , btn4 ))
 
 
-    myWindow.Resize(fyne.NewSize(1280 , 720))
-    myWindow.CenterOnScreen()
-	r, _ := fyne.LoadResourceFromPath("image.jpg")
+	myWindow.Resize(fyne.NewSize(1280,720))
+	myWindow.CenterOnScreen()
 
-    myWindow.SetContent(
-	container.NewBorder(panelContent , nil , nil , nil , img ) ,
- )
-
-
-
-
-   myWindow.ShowAndRun()
+	myWindow.SetContent(
+		container.NewBorder(panelContent, nil, nil, nil, img),
+	)
+	
+	myWindow.ShowAndRun()
 
 
 } 
