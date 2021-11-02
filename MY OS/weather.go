@@ -176,7 +176,7 @@ import (
 	"fyne.io/fyne/v2/container"
 )
 
-func showWeatherApp(w fyne.Window){
+func showWeather(w fyne.Window){
 	
 	//Api 
 

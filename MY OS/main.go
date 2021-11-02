@@ -38,7 +38,7 @@ func main() {
 	img = canvas.NewImageFromFile("images.jpg")
    
 	btn1 = widget.NewButtonWithIcon("Weather App", theme.InfoIcon(), func() {
-		showWeather(myWindow)
+		showWeather()
 	})
 
 	btn2 = widget.NewButtonWithIcon("Calculator", theme.ContentAddIcon(), func() {
