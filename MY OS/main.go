@@ -38,19 +38,19 @@ func main() {
 	img = canvas.NewImageFromFile("images.jpg")
    
 	btn1 = widget.NewButtonWithIcon("Weather App", theme.InfoIcon(), func() {
-		showWeatherApp(myWindow)
+		showWeather(myWindow)
 	})
 
 	btn2 = widget.NewButtonWithIcon("Calculator", theme.ContentAddIcon(), func() {
-		showCalc()
+		showCalc(myWindow)
 	})
 
 	btn3 = widget.NewButtonWithIcon("Gallery App", theme.StorageIcon(), func() {
-		showGalleryApp(myWindow)
+		showGallery(myWindow)
 	})
 
 	btn4 = widget.NewButtonWithIcon("Text Editor", theme.DocumentIcon(), func() {
-		showTextEditor()
+		showTextEditor(myWindow)
 	})
 
 	DeskBtn = widget.NewButtonWithIcon("Text Editor", theme.HomeIcon(), func() {

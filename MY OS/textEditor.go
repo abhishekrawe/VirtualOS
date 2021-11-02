@@ -15,9 +15,6 @@ import (
 
 )
 
-var count int = 1
-
-
 
 var count int = 1
 
