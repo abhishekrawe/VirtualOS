@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 	"fyne.io/fyne/v2"
 	//"fyne.io/fyne/v2/app"
@@ -13,30 +12,26 @@ import (
 func showCalc() {
 	// a := app.New()
 	// w := a.NewWindow("Calculator with Go and Fyne")
+
 	
 
-	var historyArr []string;
-	displayHistory:=false;
-
-    output:=""
-	
+	output:=""
 	input := widget.NewLabel(output)
 	isHistory:=false;
 	historyStr := ""
-    history:= widget.NewLabel(historyStr)
-    var historyArr []string;
-	historyBtn:=widget.NewButton("history", func() {
-
+	history:=widget.NewLabel(historyStr);
+	var historyArr []string;
+	historyBtn:=widget.NewButton("History",func(){
 		if isHistory{
-             historyStr = ""
-		} else {
-			for i:=len(historyArr)-1;i>=0;i-- {
+			historyStr="";
+		}else{
+			for i := len(historyArr)-1; i >= 0; i-- {
 				historyStr = historyStr+historyArr[i];
 				historyStr+="\n";
 			}
 		}
-          isHistory = !isHistory;
-		  history.SetText(historyStr);
+		isHistory=!isHistory;
+		history.SetText((historyStr));
 	})
 	backBtn:=widget.NewButton("back", func() {
 		if len(output)>0 {
@@ -197,20 +192,15 @@ func showCalc() {
 		container.NewGridWithColumns(2,
 		zeroBtn,
 		dotBtn,),
-		EqualBtn,),	
+		EqualBtn,
+		  ),	
 		),	
-	),
-
-)
+	))
 
 w:=myApp.NewWindow("Calc");
-
-//w.CenterOnScreen();
-w.Resize(fyne.NewSize(500,280));
-
-w.SetContent(
-	container.NewBorder(DeskBtn,nil,nil,nil,calcContainer),
-
-)
+w.Resize(fyne.NewSize(450,280));
+	r, _ := fyne.LoadResourceFromPath("static\\calclogo.png")
+	w.SetIcon(r)
+	w.SetContent(container.NewBorder(nil,nil,nil,nil,calcContainer))
 	w.Show()
-}
+		}c
