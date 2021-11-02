@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"fyne.io/fyne/v2"
 	//"fyne.io/fyne/v2/app"
@@ -9,38 +10,46 @@ import (
 	"github.com/Knetic/govaluate"
 )
 
-func showCalc() {
-	// a := app.New()
-	// w := a.NewWindow("Calculator with Go and Fyne")
-
-	
-
-	output:=""
+func showCalc(w fyne.Window){
+	var HistoryArr[]string;
+	output := ""
 	input := widget.NewLabel(output)
-	isHistory:=false;
-	historyStr := ""
-	history:=widget.NewLabel(historyStr);
-	var historyArr []string;
-	historyBtn:=widget.NewButton("History",func(){
+	isHistory :=false;
+	HistoryStr := ""
+	History := widget.NewLabel(HistoryStr)
+
+	historyBtn := widget.NewButton("History",func() {
+
 		if isHistory{
-			historyStr="";
+
+			HistoryStr=""
+
+
 		}else{
-			for i := len(historyArr)-1; i >= 0; i-- {
-				historyStr = historyStr+historyArr[i];
-				historyStr+="\n";
+
+			for i:=len(HistoryArr)-1;i>0;i--{
+				HistoryStr = HistoryStr+HistoryArr[i];
+				HistoryStr+="\n";
+	
 			}
+
 		}
-		isHistory=!isHistory;
-		history.SetText((historyStr));
-	})
-	backBtn:=widget.NewButton("back", func() {
-		if len(output)>0 {
-			output = output[:len(output)-1];
-			input.SetText(output)
-		}
-      
+		isHistory = !isHistory;
+		History.SetText(HistoryStr);
 
 	})
+
+	BackspaceBtn := widget.NewButton("Backspace",func() {
+
+		if len(output)>0{
+
+			output = output[:len(output)-1];
+			input.SetText(output);
+
+		}
+
+	})
+
 	clearBtn:= widget.NewButton("clear" , func() {
 
 		output = "";
@@ -157,8 +166,10 @@ func showCalc() {
 		}
 
 		input.SetText(output)
+		fmt.Println(HistoryArr)
 
 	})
+	hello := widget.NewLabel("Calculator")
 
 	w.SetContent(container.NewVBox(
 		input,
@@ -192,15 +203,17 @@ func showCalc() {
 		container.NewGridWithColumns(2,
 		zeroBtn,
 		dotBtn,),
-		EqualBtn,
+		equalBtn,
 		  ),	
 		),	
-	))
+	)
 
-w:=myApp.NewWindow("Calc");
-w.Resize(fyne.NewSize(450,280));
-	r, _ := fyne.LoadResourceFromPath("static\\calclogo.png")
-	w.SetIcon(r)
-	w.SetContent(container.NewBorder(nil,nil,nil,nil,calcContainer))
+     //w:=myApp.NewWindow("Calc");
+     //w.Resize(fyne.NewSize(450,280));
+	
+	w.SetContent(
+		container.NewBorder(nil,nil,nil,nil,calcContainer)
+	)
+	
 	w.Show()
-		}c
+}
