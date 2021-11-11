@@ -17,7 +17,7 @@ import (
 	
 )
 
-func showWeatherApp(w fyne.Window) {
+func showWeather(w fyne.Window) {
 	// a:= app.New()
 
 	// w:= a.NewWindow("Weather App Pep")
